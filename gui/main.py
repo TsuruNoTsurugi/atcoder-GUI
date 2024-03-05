@@ -86,7 +86,7 @@ def test_code():
     task_name = f"{ct.lower()}{cn.lower()}/{pb.lower()}"
     st.delete("1.0",tkinter.END)
     #code_test_result.config(text="WJ",background="#777777")
-    if language == "cpp":
+    if language == "cpp": # cpp
         compile_out = subprocess.Popen(f"g++ {file_name_to_test}".split(),cwd=path.normpath(path.join(config.BASE_ROOT_PATH,task_name)),stdout=subprocess.PIPE,stderr=subprocess.PIPE)
         compile_out_err = compile_out.communicate()[1].decode()
         if compile_out_err!="":
@@ -94,20 +94,20 @@ def test_code():
             for char in compile_out_err:
                 st.insert(tkinter.END,chars=char)
             st.insert(tkinter.END,"="*50+"\nCOMPILE FAILED")
-            code_test_result.config(text="RE",background="#f0ad4e")
+            code_test_result.config(text="CE",background="#f0ad4e")
             return
-        test_out = subprocess.Popen(f"oj t -d tests/".split(),cwd=path.normpath(path.join(config.BASE_ROOT_PATH,task_name)),stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+        test_out = subprocess.Popen(f"oj t -d tests/ --tle {config.TLE_SECONDS} --mle {config.MLE_MEGABYTES}".split(),cwd=path.normpath(path.join(config.BASE_ROOT_PATH,task_name)),stdout=subprocess.PIPE,stderr=subprocess.PIPE)
         test_out_out = test_out.communicate()[0].decode()
         print(test_out_out)
         for string in test_out_out:
             st.insert(tkinter.END,string)
-        if "[SUCCESS]" in test_out_out: # if AC
-            code_test_result.config(text="AC",background="#5cb65c")
-        else:
+        if "[FAILURE]" in test_out_out: # if AC
             code_test_result.config(text="Not AC",background="#f0ad4e")
-    else:
+        else:
+            code_test_result.config(text="AC",background="#5cb65c")
+    else: # Python
         #test_out = subprocess.Popen(f'sh {config.PYTHON_SHELL_FILEPATH} "python3 {file_name_to_test}"'.split(),shell=True,cwd=path.normpath(path.join(config.BASE_ROOT_PATH,task_name)),stdout=subprocess.PIPE,stderr=subprocess.PIPE)
-        test_out = subprocess.run(['sh', f'{config.PYTHON_SHELL_FILEPATH}', f'python3 {file_name_to_test}'],cwd=path.normpath(path.join(config.BASE_ROOT_PATH,task_name)),capture_output=True, text=True)
+        test_out = subprocess.run(['sh', f'{config.PYTHON_SHELL_FILEPATH}', f'python3 {file_name_to_test}', '--tle', f'{config.TLE_SECONDS}', '--mle', f'{config.MLE_MEGABYTES}'],cwd=path.normpath(path.join(config.BASE_ROOT_PATH,task_name)),capture_output=True, text=True)
         test_out_err = test_out.stderr
         test_out_out = test_out.stdout
         if test_out_err!="":
@@ -119,10 +119,10 @@ def test_code():
             return
         for string in test_out_out:
             st.insert(tkinter.END,string)
-        if "[SUCCESS]" in test_out_out:
-            code_test_result.config(text="AC",background="#5cb65c")
+        if "[FAILURE]" in test_out_out:
+            code_test_result.config(text="Not AC",background="#f0ad4e")
         else:
-            code_test_result.config(text="Not AC",background="#f0ad4e")            
+            code_test_result.config(text="AC",background="#5cb65c")                      
 
 def oj_template():
     if contest_num.get()=="":
