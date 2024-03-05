@@ -4,6 +4,7 @@
 Tkinterを使用しています。インストールされていない場合は[こちら](#tkinterがない)をご覧ください。
 ## 説明
 [AtCoder-GUI](https://github.com/TsuruNoTsurugi/atcoder-gui)は[AtCoder-CLI](https://github.com/Tatamo/atcoder-cli)の機能をPython tkinterを用いてGUI化し、操作パネルのようにして、コマンド操作を不要としました。
+
 ![screen shot](docs/img/screen_shot.png)
 
 ## インストール
@@ -55,7 +56,7 @@ PythonとC++を同時に使う場合は、`template.json`ファイルは以下�
 ```
 * `config.py`の`# TODO`とある部分を設定してください。
 
-```python:config.json
+```python:config.py
 USER_NAME = "<Your User Name>"  # TODO
 PASSWORD = "<Your Password>"    # TODO
 ATCODER_BASE_URL = "https://atcoder.jp"
