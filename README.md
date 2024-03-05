@@ -1,6 +1,7 @@
 # AtCoder GUI
 ## 環境
 * Python3.10 or newer
+
 Tkinterを使用しています。インストールされていない場合は[こちら](#tkinterがない)をご覧ください。
 ## 説明
 [AtCoder-GUI](https://github.com/TsuruNoTsurugi/atcoder-gui)は[AtCoder-CLI](https://github.com/Tatamo/atcoder-cli)の機能をPython tkinterを用いてGUI化し、操作パネルのようにして、コマンド操作を不要としました。
@@ -76,7 +77,7 @@ $ python3 gui/main.py
 ```
 
 ## 使い方
-(ABC339-A)[http://atcoder.jp/contests/abc339/tasks/abc339_a]をC++で解く例として解説します。
+[ABC339-A](http://atcoder.jp/contests/abc339/tasks/abc339_a)をC++で解く例として解説します。
 ### ログインする
 ログインボタンを押すだけ。
 もし、平文でユーザー名、パスワードを保存したくない場合は`acc login`でセッションを取得してください。
@@ -90,11 +91,13 @@ $ su <標準ユーザー名>
 $ python3 gui/main.py
 ```
 * すると以下のような画面が出るので、解くコンテスト名(例:ABC339)などを入力して、`Select`を押してください。この操作は以下のコマンドと同じです。
+  
 ![screen_shot2](docs/img/screen_shot2.png)
 ```bash
 $ acc new abc339
 ```
 * 次に解く問題を決めます。`Select`の横にある`Solve`を押すと、`Submit`の横にあるURLが変わります。例えば、ABC339-AをとくとURLは以下のようになります。
+
 ![screen_shot3](docs/img/screen_shot3.png)
 
 * ソースコードを書いてください。
