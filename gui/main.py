@@ -1,12 +1,11 @@
 import tkinter
-from tkinter import scrolledtext
+import tkinter.scrolledtext
 import subprocess
 import shell_communication
 import config
 from time import sleep
 from os import getcwd,path,mkdir
 root_window = tkinter.Tk()
-test_window = tkinter.Tk()
 
 def command_exec(cmd:str,cwd:str=getcwd()) -> str:
     proc = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,cwd=cwd)
@@ -146,7 +145,6 @@ def oj_template():
         st.insert(tkinter.END,chars=char)
 
 root_window.title("acc GUI")
-test_window.title("Test Code")
 
 # title row 0
 title = tkinter.Label(root_window,text="atcoder-cli GUI")
@@ -191,38 +189,37 @@ string_Var_template.set(config.TEMPLATE_TYPE_LIST[0])
 template_type = tkinter.OptionMenu(root_window,string_Var_template,*config.TEMPLATE_TYPE_LIST)
 
 # row 0
-title.grid(row=0,column=1,columnspan=1,padx=10,pady=5)
-logout_button.grid(row=0,column=3,padx=10,pady=5)
-login_bottun.grid(row=0,column=4,padx=10,pady=5)
+title.grid(row=0,column=1,columnspan=1,padx=5,pady=5)
+logout_button.grid(row=0,column=3,padx=5,pady=5)
+login_bottun.grid(row=0,column=4,padx=5,pady=5)
 
 # row 1
-contest_type.grid(row=1,column=0,padx=10,pady=5)
-contest_num.grid(row=1,column=1,padx=10,pady=5)
-select_contest.grid(row=1,column=2,padx=10,pady=5)
-current_problem.grid(row=1,column=3,padx=10,pady=5)
-solve_problem.grid(row=1,column=4,padx=10,pady=5)
+contest_type.grid(row=1,column=0,padx=5,pady=5)
+contest_num.grid(row=1,column=1,padx=5,pady=5)
+select_contest.grid(row=1,column=2,padx=5,pady=5)
+current_problem.grid(row=1,column=3,padx=5,pady=5)
+solve_problem.grid(row=1,column=4,padx=5,pady=5)
 
 # row 2
-label_description.grid(row=2,column=0,padx=10,pady=5)
-language_select.grid(row=2,column=1,padx=10,pady=5)
-label_file_name.grid(row=2,column=2,padx=10,pady=5,columnspan=3)
+label_description.grid(row=2,column=0,padx=5,pady=5)
+language_select.grid(row=2,column=1,padx=5,pady=5)
+label_file_name.grid(row=2,column=2,padx=5,pady=5,columnspan=3)
 
 # row 3
-code_test_button.grid(row=3,column=0,padx=10,pady=5)
-file_name_entry.grid(row=3,column=1,padx=10,pady=5,columnspan=3)
-code_test_result.grid(row=3,column=4,padx=10,pady=5)
+code_test_button.grid(row=3,column=0,padx=5,pady=5)
+file_name_entry.grid(row=3,column=1,padx=5,pady=5,columnspan=3)
+code_test_result.grid(row=3,column=4,padx=5,pady=5)
 
 # row 4
-submit_button.grid(row=4,column=0,padx=10,pady=5)
-label_URL.grid(row=4,column=1,columnspan=4,padx=10,pady=5)
+submit_button.grid(row=4,column=0,padx=5,pady=5)
+label_URL.grid(row=4,column=1,columnspan=4,padx=5,pady=5)
 
 # row 5
-generate_button.grid(row=5,column=0,padx=10,pady=5)
-template_type.grid(row=5,column=1,padx=10,pady=5)
+generate_button.grid(row=5,column=0,padx=5,pady=5)
+template_type.grid(row=5,column=1,padx=5,pady=5)
 
-st = scrolledtext.ScrolledText(test_window)
-st.pack()
+st = tkinter.scrolledtext.ScrolledText(master=root_window,width=70,height=30)
+st.grid(row=6,column=0,columnspan=5,padx=0,pady=5)
 
 # display
 root_window.mainloop()
-test_window.mainloop()
