@@ -89,7 +89,7 @@ $ python3 gui/main.py
 ```
 
 ## 使い方
-[ABC339-A](http://atcoder.jp/contests/abc339/tasks/abc339_a)をC++で解く例として解説します。
+[ABC343-A](http://atcoder.jp/contests/abc343/tasks/abc343_a)をC++で解く例として解説します。
 ### ログインする
 ログインボタンを押すだけ。
 もし、平文でユーザー名、パスワードを保存したくない場合は`acc login`でセッションを取得してください。
@@ -102,13 +102,15 @@ $ su <標準ユーザー名>
 ```bash
 $ python3 gui/main.py
 ```
-* すると以下のような画面が出るので、解くコンテスト名(例:ABC339)などを入力して、`Select`を押してください。この操作は以下のコマンドと同じです。
-  
 ![screen_shot2](docs/img/screen_shot2.png)
+
+* すると以下のような画面が出るので、解くコンテスト名(例:ABC343)などを入力して、`Select`を押してください。この操作は以下のコマンドと同じです。
+  
+![screen_shot2](docs/img/screen_shot4.png)
 ```bash
-$ acc new abc339
+$ acc new abc343
 ```
-* 次に解く問題を決めます。`Select`の横にある`Solve`を押すと、`Submit`の横にあるURLが変わります。例えば、ABC339-AをとくとURLは以下のようになります。
+* 次に解く問題を決めます。`Select`の横にある`Solve`を押すと、`Submit`の横にあるURLが変わります。例えば、ABC343-AをとくとURLは以下のようになります。
 
 ![screen_shot3](docs/img/screen_shot3.png)
 
@@ -117,7 +119,7 @@ $ acc new abc339
 ### ソースコードをテストする
 * 書いたソースコードのファイル名を`Test`の横のボックスに入力してください。ここで、ソースコード`main.cpp`のフルパスは以下のように認識されます。
 ```
-<BASE ROOT PATH>/abc339/a/main.cpp
+<BASE ROOT PATH>/abc343/a/main.cpp
 ```
 * `Test`ボタンを押してソースコードをテストしてください。テスト結果の総合は`Test`の行に表示されます。詳細は別ウィンドウで表示されます。
 
